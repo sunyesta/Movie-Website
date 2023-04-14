@@ -1,3 +1,6 @@
+console.log(`./.env.${process.env.NODE_ENV}`);
+require("dotenv").config({ path: `./.env.${process.env.NODE_ENV}` });
+
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -9,8 +12,6 @@ const session = require("express-session");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
 const passport_multiUserExtension = require("./passport_multiUserExtension");
-
-require("dotenv").config();
 
 //data base
 const dbManager = require("./database-manager");
