@@ -4,7 +4,7 @@ if (process.env.NODE_ENV == "production") {
 	// __dirname = "/home/group35/"+
 }
 console.log(`./.env.${process.env.NODE_ENV}`);
-require("dotenv").config({ path: `./.env.${process.env.NODE_ENV}` });
+require("dotenv").config({ path: __dirname + `/.env.${process.env.NODE_ENV}` });
 
 const express = require("express");
 const app = express();
