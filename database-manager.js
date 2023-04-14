@@ -4,7 +4,11 @@ const dbUtils = require("./dbUtils");
 require("dotenv").config();
 
 const moviesList = require("./database/movies");
-const db = new sqlite3.Database("erklwje", sqlite3.OPEN_READWRITE, handleErr);
+const db = new sqlite3.Database(
+	process.env.DATABASE_URL,
+	sqlite3.OPEN_READWRITE,
+	handleErr
+);
 
 // --- config
 sql = `PRAGMA foreign_keys = ON;`;
