@@ -43,7 +43,7 @@ app.set("json spaces", 2);
 app.locals.basedir = path.join(__dirname, "/pug");
 
 // external packages
-app.use(express.static(__dirname + process.env.ROOT_PATH + "/public"));
+app.use("/public", express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: false })); //access form variables inside post method
 app.use(flash());
 app.use(
