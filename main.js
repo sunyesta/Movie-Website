@@ -2,7 +2,7 @@ const path = require("path");
 
 if (process.env.NODE_ENV == "production") {
 	console.log(__dirname);
-	__dirname = "/group35/Movie-Website";
+	__dirname = "/home/group35/Movie-Website";
 }
 console.log("new dir name = ", __dirname);
 console.log(`./.env.${process.env.NODE_ENV}`);
