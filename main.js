@@ -1,7 +1,8 @@
-const path = require("path");
+// const path = require("path");
+let __dirname = "/Movie-Website";
 if (process.env.NODE_ENV == "production") {
 	console.log(__dirname);
-	__dirname = "/home/group35/Movie-Website";
+	// __dirname = "";
 }
 console.log(`./.env.${process.env.NODE_ENV}`);
 require("dotenv").config({ path: __dirname + `/.env.${process.env.NODE_ENV}` });
