@@ -2,7 +2,7 @@ const path = require("path");
 
 console.log("new dir name = ", __dirname);
 console.log(`./.env.${process.env.NODE_ENV}`);
-require("dotenv").config({ path: `/.env.${process.env.NODE_ENV}` });
+require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` });
 
 const express = require("express");
 const app = express();
