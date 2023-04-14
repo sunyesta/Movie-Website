@@ -109,13 +109,14 @@ app.delete("/logout", (req, res) => {
 });
 
 const router = express.Router();
-app.use(process.env.ROOT_PATH, router);
 
 router.use("/movieInfo", require("./routes/movieInfo"));
 router.use("/users", require("./routes/users"));
 router.use("/", require("./routes/home"));
 router.use("/tickets", require("./routes/tickets"));
 router.use("/data", require("./routes/data"));
+
+app.use(process.env.ROOT_PATH, router);
 
 // ------- start server
 app.listen(process.env.PORT, () => {
