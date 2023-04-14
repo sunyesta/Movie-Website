@@ -1,0 +1,25 @@
+extends /layouts/default.pug
+
+block body  
+
+    div.flex.flex-row-collapse.flex-center.flex-spread-centered
+        form(action="/users/login" method="POST")
+            div.flex.flex-col.flex-center.flex-align-center.child-margin-medium.background-trans-black.bevel.margin-medium(style = "width:300px")
+                h1 Login
+                div#login-error-message
+
+                    if messages.error
+                        div.button-grey.bevel.padding-small.flex.flex-row.flex-center
+                            i.fa.fa-warning.fa-fw
+                            div #{messages.error}
+
+                label(for="username") username
+                    input(name = "username" ).margin-small
+                label(for="password") password
+                    input(name = "password" ).margin-small
+                div.child-margin-medium
+                    button(type = "submit" ).button-1.button-red.button-fill login
+        div.flex.flex-col.flex-align-center.flex-start.margin-medium.background-trans-black.margin-medium.bevel(style = "width:300px")
+            h1 Register
+            a(href="/users/register")     
+                button.button-1.button-blue.button-fill(style={margin:"50px 0px"}) register

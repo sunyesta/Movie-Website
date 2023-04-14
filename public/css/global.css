@@ -1,0 +1,298 @@
+/* defaults */
+
+* {
+	font-family: "Sawarabi Gothic";
+}
+
+body {
+	background-color: #1a242b;
+	color: rgb(255, 253, 249);
+}
+input {
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+a:link {
+	color: #c5708c;
+}
+
+/* visited link */
+a:visited {
+	color: #ed5789;
+}
+
+/* text styling */
+
+.text-centered {
+	text-align: center;
+}
+
+/* styling */
+
+.none {
+	display: none;
+}
+
+.border {
+	border-style: solid;
+	border-width: 5px;
+}
+
+.bevel {
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.bevel-bottom {
+	border-radius: 0px 0px 6px 6px;
+	overflow: hidden;
+}
+
+@keyframes anim-bevel-hover {
+	0% {
+		border-radius: 0px;
+	}
+	100% {
+		border-radius: 6px;
+	}
+}
+
+.bevel-hover:hover {
+	animation-name: anim-bevel-hover;
+	animation-duration: 0.2s;
+	border-radius: 6px;
+}
+
+.section-button {
+	margin: 10px;
+	padding: 10px;
+	background-color: blueviolet;
+}
+
+@keyframes anim-section-button-hover {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.9;
+	}
+}
+
+/* TODO figure out the animation here */
+.section-button:hover {
+	/* background-color: aquamarine; */
+	animation: anim-section-button-hover 1s ease-in-out 3s forwards;
+}
+
+/* position */
+
+.absolute {
+	position: absolute;
+}
+
+.pos-start {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+/* sizing */
+
+.zero-h {
+	height: 0px;
+}
+
+.fill {
+	height: 100%;
+	width: 100%;
+}
+
+.fill-h {
+	height: 100%;
+}
+
+.fill-w {
+	width: 100%;
+}
+
+.fill-fifty {
+	width: 50%;
+}
+
+.small {
+	height: 30vh;
+	width: auto;
+}
+@media (orientation: portrait) {
+	.small {
+		max-height: 40vh;
+		height: auto;
+	}
+}
+
+.medium {
+	height: 50vh;
+	width: auto;
+}
+@media (orientation: portrait) {
+	.medium {
+		height: auto;
+		max-height: 80vh;
+	}
+}
+
+.margin-small {
+	margin: 10px;
+}
+
+.margin-medium {
+	margin: 20px;
+}
+
+.padding-small {
+	padding: 10px;
+}
+
+.child-margin-tiny > * {
+	margin: 3px;
+}
+
+.child-margin-small > * {
+	margin: 10px;
+}
+
+.child-margin-medium > * {
+	margin: 20px;
+}
+
+/* general positioning */
+
+.center {
+	position: absolute;
+	offset-anchor: center;
+	top: 50%;
+	left: 50%;
+}
+
+/* flex */
+.flex {
+	display: flex;
+}
+
+.flex-row {
+	flex-direction: row;
+	align-items: center;
+}
+
+.flex-col {
+	flex-direction: column;
+}
+
+.flex-center {
+	justify-content: center;
+}
+
+.flex-start {
+	justify-content: flex-start;
+}
+
+.flex-end {
+	justify-content: flex-end;
+}
+
+.flex-align-start {
+	align-items: start;
+}
+
+.flex-align-center {
+	align-items: center;
+}
+
+.flex-align-stretch {
+	align-items: stretch;
+}
+
+.flex-spread-max {
+	justify-content: space-between;
+}
+
+.flex-spread-centered {
+	justify-content: space-evenly;
+}
+
+.flex-spread-around {
+	justify-content: space-around;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
+.flex-grow {
+	flex-grow: 1;
+}
+
+.flex-row-collapse {
+	flex-direction: row;
+}
+
+.stretch {
+	align-self: stretch;
+}
+
+@media (orientation: portrait) {
+	.flex-row-collapse {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+/* buttons */
+
+/* background colors */
+.background-trans-black {
+	background-color: #3f3f3fe0;
+}
+
+.background-grey-1 {
+	background-color: #aaaaaae0;
+}
+
+.background-trans-red {
+	background-color: #8e3f6a84;
+}
+
+.red-to-blue {
+	background: linear-gradient(
+		to right,
+		#2253f6 0%,
+		#2253f6 40%,
+		#d70466 60%,
+		#d70466 100%
+	);
+}
+
+.text-white {
+	color: rgb(178, 186, 194);
+}
+
+.shadow {
+	/* offset-x | offset-y | blur-radius | spread-radius | color */
+	box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.464);
+}
+
+.glow {
+	transition: box-shadow 0.25s;
+	box-shadow: 0px 0px 30px rgba(224, 255, 254, 0.243);
+}
+
+.glow-hover:hover {
+	box-shadow: 0px 0px 50px rgba(255, 255, 255, 0.482);
+}
+
+.fit-content {
+	min-width: fit-content; /*if you don't add this, the poster might get smooshed*/
+	min-height: fit-content;
+}

@@ -1,0 +1,102 @@
+.button-1 {
+	display: inline-block;
+	cursor: pointer;
+	font-size: 18px;
+	line-height: 20px;
+	font-weight: 600;
+	border-radius: 8px;
+	padding: 14px 24px;
+	border: none;
+	transition-duration: 0.25s;
+	color: #fff;
+}
+
+#otherUsersButton {
+	display: inline-block;
+	cursor: pointer;
+	font-size: 18px;
+	line-height: 20px;
+	font-weight: 600;
+	border-radius: 8px;
+	border: none;
+	transition-duration: 0.25s;
+	color: #fff;
+	padding: 10px;
+	padding-left: 20px;
+}
+
+.button-raise {
+	transition-property: transform, box-shadow;
+}
+
+.button-raise:hover {
+	box-shadow: 0 0.5em 0.5em -0.4em rgb(85, 85, 85);
+	transform: translateY(-0.25em);
+}
+
+.button-fill {
+	transition-property: box-shadow;
+}
+
+.button-fill:hover,
+.button-fill:focus {
+	box-shadow: inset 0 0 0 2em rgba(50, 53, 255, 0.499);
+}
+
+.button-2 {
+	display: inline-block;
+	cursor: pointer;
+	font-size: 10px;
+	line-height: 10px;
+	font-weight: 600;
+	border-radius: 8px;
+	padding: 5px 10px;
+	border: none;
+	transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s,
+		-webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+
+	color: #fff;
+}
+
+.button-inactive {
+	background: grey;
+}
+
+.button-grey {
+	background: #ce6989;
+	/* background: linear-gradient(
+		to right,
+		rgb(43, 215, 60) 0%,
+		rgb(43, 215, 60) 50%,
+		rgb(43, 215, 60) 100%
+	); */
+}
+
+.button-red {
+	background: linear-gradient(
+		to right,
+		rgb(230, 30, 77) 0%,
+		rgb(227, 28, 95) 50%,
+		rgb(215, 4, 102) 100%
+	);
+}
+
+.button-blue {
+	/* background: #3d6aff; */
+	background: linear-gradient(to right, #3f5ec3 0%, #3f69f4 50%, #2a54dd 100%);
+}
+
+.button-light-blue {
+	background: #7277f4;
+	/* background: linear-gradient(to right, #3f5ec3 0%, #3f69f4 50%, #2a54dd 100%); */
+}
+
+.button-flipOnClick-init {
+	transform: rotateY(0deg);
+}
+
+.button-flipOnClick {
+	transition: transform 2s;
+	transform-style: preserve-3d;
+	transform: rotateY(180deg);
+}

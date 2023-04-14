@@ -1,0 +1,72 @@
+mixin slideWrapper()
+	div#users-slide-wrapper
+		div#users-slide.flex.flex-col.flex-align-center.padding-small.child-margin-tiny.bevel
+			div.flex.flex-row.child-margin-tiny
+				a(href="/users/ticket-history")
+					button.button-1.button-fill.button-blue Purchase History
+				- let profileLink = `/users/profile`
+				a(href=profileLink)
+					button.button-1.button-fill.button-blue
+						i.fa.fa-user
+			form(action="/logout?_method=DELETE" method="POST").fill-w
+				button(type = "submit").button-2.button-fill.button-red.fill-w logout
+
+			div.horizontal-line
+			h3 Signed In
+			each user in users
+				if user.username == currentUser.username
+					- continue
+				div.flex.flex-row.flex-center.fill-w.flex-spread-max
+					form(action="/login" method="POST").fill-w
+						input(type="hidden" name="username" value=user.username)
+						input(type="hidden" name="password" value=user.password)
+						button(type="submit").button-1.button-fill.button-blue.flex-grow.fill-w #{user.name}
+					form(action="/dummy-logout" method="POST")
+						input(type="hidden" name="username" value=user.username)
+						button(style = {"margin-left":"10px"} type="submit").button-1.button-fill.button-red
+							i.fa.fa-sign-out-alt.fa-solid
+
+			a(href="/users/login").fill-w
+				button.button-1.button-fill.button-blue.fill-w +
+
+div#header-wrapper
+	header#top.flex.flex-start.flex-row.flex-spread-max.red-to-blue.bevel(style="height:70px") 
+		div.flex.flex-row.flex-center.fill-h
+
+			a.flex.flex-row.flex-center.fill-h.margin-medium(href="/home")
+				img.margin-small.fill-h(src="/images/logo.png")
+				h1#logo-title.text-white XD Movies
+		div.margin-medium
+
+
+
+			if currentUser
+				//- div.flex
+				//- 	form(action="/logout?_method=DELETE" method="POST")
+				//- 		button(type="submit") logout
+				//- 	div#otherUsersButton.button-grey.flex.flex-center.flex-row
+				//- 		i.fa.fa-arrow-right.margin-small
+				//- 		a(href="/users/ticket-history")
+				//- 			button.button-1.button-blue
+
+				//- 				| Hello, #{currentUser.username}
+
+
+				div.flex.expand-left-wrapper
+					button#users-btn.button-1.button-blue Hello, #{currentUser.name}
+
+
+
+
+
+
+			else
+				a#signup(href="/users/login")
+					button.button-1.button-grey.button-fill signup/login
+
+
+	div.fill-w.zero-h.flex.flex-row.flex-end.flex-align-start 
+		+slideWrapper()
+
+
+script(src='/js/headerfunc.js')

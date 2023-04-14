@@ -1,0 +1,55 @@
+extends /layouts/default.pug
+include ../components/moviePoster.pug
+
+//- Mixins
+
+
+
+mixin movieElem(movie)
+    //- - let ticketURL = "/tickets/movies/"+movie.name
+    //- - let infoPageURL = "/movieInfo/"+movie.name
+    div#movieElemTemplate.none
+        a(href=infoPageURL )
+            div.movieElem.pullup-card.glow.glow-hover.bevel.margin-small
+                div.pullup-card-inner
+                    div.pullup-card-main
+                        img(src="").moviePoster.fill-h
+                    div.pullup-card-pullup.background-trans-black.shadow-around 
+                        a.infoPageURL(href="")
+                            button.margin-small.button-1.button-red.button-raise Learn more
+
+
+mixin movieSelectionView()
+    div.flex.flex-col.flex-align-center.flex-center
+        h1.text-centered.background-trans-black.bevel.padding-small(style={"margin-top": "50px", "margin-bottom": "60px"}) Avalible Movies
+
+
+        div#movie-selection-frame.flex.flex-row.flex-center.flex-wrap
+            +movieElem()
+
+        //- right row
+        button#more-movies-btn.button-1.button-red.margin-small.button-fill more movies
+
+
+//- Blocks
+
+block meta
+    meta(movieName = movieName)
+
+block body
+
+    //- 2 rows on main page
+    div#views-container
+        div#views.flex.flex-row.flex-spread-max
+            div#movies-view
+                +movieSelectionView()
+            div#tickets-view
+                include ../components/buyTicketsView.pug
+
+
+    script(src='/js/home.js')
+    //- script(src='/js/RandomColorDivs.js')
+
+
+
+

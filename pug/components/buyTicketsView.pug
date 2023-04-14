@@ -1,0 +1,42 @@
+//- - const movieLink = "window.location.href='/movieInfo/"+movie.name+"';"
+
+div.flex.flex-col
+    //- button#back-to-view-1 back
+    div.flex.flex-row.flex-start.stretch
+        button#back-to-view-1.button-1.button-red.margin-small
+            i.fa.fa-arrow-left.fa-fw
+            |movies
+    div.flex.flex-col.flex-center.flex-align-center
+        h1.movie-name "movie name"
+
+        button#movie-info-button.button-2.button-inactive.margin-small
+            div.flex.flex-row.flex-center
+                i.fa.fa-info.fa-fw
+                div about movie
+
+
+
+    div.flex.flex-center.flex-row-collapse.flex-align-center
+
+        div.flex.flex-center.flex-row.flex-align-center.margin-medium.glow
+            img().moviePoster.bevel.small
+
+        div.flex-spread-max.flex.flex-row-collapse.fill-w.flex-center.child-margin-small
+            table#ticketTable
+
+
+            div#ticketsView.bevel.background-trans-black.flex.flex-col.flex-center.flex-align-center.padding-small.text-white.padding-small(style = {width:"200px"})
+                h1 Tickets
+                div#selectionWrapper
+                    div#validSelection
+                        div.flex.flex-col.flex-center.flex-align-center.child-margin-small
+                            div.flex.flex-row.flex-center
+                                button#subTicket -
+                                input#ticketInput.fill-w(type="number" value=0)
+                                button#addTicket +
+                            button#purchase.button-1.button-blue.button-fill purchase
+                    div#invalidSelection
+                        div please select a movie time slot
+
+
+//- script(src='/js/buyTicketsPageFunctionality.js')

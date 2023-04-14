@@ -1,0 +1,34 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        block meta
+
+        title Document
+
+        //- Style sheets
+        link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic")
+        link(rel="stylesheet" href="/css/global.css")
+        link(rel="stylesheet" href="/css/buttons.css")
+        link(rel="stylesheet" href="/css/components.css")
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css' rel='stylesheet' type='text/css')
+        script(src="https://kit.fontawesome.com/715ad1eb28.js" crossorigin="anonymous")
+        block styleSheets
+    body 
+        div.fill.flex.flex-col.flex-spread-max.flex-center
+            div#top
+            include ../components/header.pug
+
+            main.flex-grow
+                block body
+
+            footer.background-trans-black.flex.flex-center
+                a(href="#top") back to top
+
+
+
+
+

@@ -1,0 +1,32 @@
+extends /layouts/default.pug
+
+block body  
+
+    div.flex.flex-col.flex-center.flex-align-center
+        div.flex.flex-col.flex-center.flex-align-center.background-trans-black.padding-small.bevel.margin-small
+            a(href="/users/login")
+                div.button-2.button-inactive.margin-small.button-raise
+                    div.flex.flex-row.flex-center
+                        i.fa.fa-arrow-left.fa-fw
+                        div login
+            h1(style={"margin-top":"5px"}) Create your account
+            if error
+                div.button-grey.bevel.padding-small.flex.flex-row.flex-center
+                    i.fa.fa-warning.fa-fw
+                    div #{error}
+            form(action="/users/register" method="POST")
+                div.flex.flex-col.flex-center.flex-align-center.child-margin-medium
+                    label(for="username") username
+                        input(name = "username" required).margin-small
+                    label(for="password") password
+                        input(name = "password" required).margin-small
+                    label(for="name") name
+                        input(name = "name" type="text" required).margin-small
+                    label(for="email") email
+                        input(name = "email" type="email" required).margin-small
+                    label(for="address") address
+                        input(name = "address" required).margin-small
+                    label(for="creditcard") creditcard
+                        input(name = "creditcard" type="number" required).margin-small
+                    div.flex.flex-row-collapse
+                        button(type = "submit" ).button-1.button-blue.button-fill register

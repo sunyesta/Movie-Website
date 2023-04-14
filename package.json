@@ -1,0 +1,35 @@
+{
+	"name": "homework-3",
+	"version": "1.0.0",
+	"description": "",
+	"scripts": {
+		"start": "node main",
+		"dev": "nodemon main",
+		"startpug": "pug ./pug/pages -o ./src/html/ -P -w -b ./pug",
+		"pughelp": "pug -h",
+		"killserver": "lsof -t -i tcp:5002 | xargs kill"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"bcrypt": "^5.1.0",
+		"body-parser": "^1.20.2",
+		"cookie-parser": "^1.4.6",
+		"dotenv": "^16.0.3",
+		"express": "^4.18.2",
+		"express-flash": "^0.0.2",
+		"express-session": "^1.17.3",
+		"fs": "^0.0.1-security",
+		"method-override": "^3.0.0",
+		"morgan": "^1.10.0",
+		"passport": "^0.6.0",
+		"passport-local": "^1.0.0",
+		"path": "^0.12.7",
+		"pug-cli": "^1.0.0-alpha6",
+		"sqlite3": "^5.1.6"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.22"
+	}
+}

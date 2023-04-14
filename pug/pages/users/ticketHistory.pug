@@ -1,0 +1,27 @@
+extends /layouts/default.pug
+include /components/date.pug
+
+block body 
+    div.flex.flex-col.flex-center.flex-align-center
+        h1.button-red.bevel.padding-small Ticket History
+        div.flex.flex-col.flex-align-start
+            each td in ticketDatas
+                div.flex.flex-row-collapse.flex-center.flex-align-center.child-margin-small.flex-spread-max.background-trans-black.margin-small.bevel(style={width:"50vw"})
+                    div.flex.flex-col.flex-center.fill-h
+                        div.flex.flex-row-collapse.child-margin-small
+                            +date(td.purchaseDate)
+                            img(src=td.moviePosterURL).moviePoster.fill-h.small.bevel
+                    div.flex.flex-col.flex-center.flex-align-center.stretch.flex-grow
+                        h1 #{td.movieName}
+
+                        table#userdata-table 
+                            tr
+                                th Time
+                                td
+                                    +date(td.movieDate)
+                                    |  at 
+                                    +time(td.movieDate)
+                            tr
+                                th tickets
+                                td  #{td.tickets}
+

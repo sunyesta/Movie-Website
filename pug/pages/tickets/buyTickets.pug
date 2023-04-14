@@ -1,0 +1,57 @@
+extends /layouts/default.pug
+
+block styleSheets
+	link(rel="stylesheet" href="/css/buyTickets.css")
+
+block meta
+	meta(movie=movie)
+
+block body
+	- const movieLink = "window.location.href='/movieInfo/"+movie.name+"';"
+
+	div.flex.flex-col
+
+		div.flex.flex-col.flex-center.flex-align-center
+			h1 #{movie.name}
+
+			button.button-2.button-inactive(onclick=movieLink).margin-small
+				div.flex.flex-row.flex-center
+					i.fa.fa-info.fa-fw
+					div about movie
+
+
+
+		div.flex.flex-center.flex-row-collapse.flex-align-center
+
+			div.flex.flex-center.flex-row.flex-align-center.margin-medium.glow
+				img(src=movie.posterURL).moviePoster.bevel.small
+
+			div.flex-spread-max.flex.flex-row-collapse.fill-w.flex-center.child-margin-small
+				table#ticketTable
+					each slotlist in timeSlots 
+						tr 
+							th #{slotlist.date.toLocaleDateString("en-US")}
+							td.flex.flex-row.flex-wrap.child-margin-tiny
+								each time in slotlist.slots
+									- timeFormatted = time.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit"})
+									button.movieSlotButton.button-1.button-inactive.button-raise(slotID = time) #{timeFormatted}
+
+
+				div#ticketsView.bevel.background-trans-black.flex.flex-col.flex-center.flex-align-center.padding-small.text-white.padding-small(style = {width:"200px"})
+					h1 Tickets
+					div#selectionWrapper
+						div#validSelection
+							div.flex.flex-col.flex-center.flex-align-center.child-margin-small
+								div.flex.flex-row.flex-center
+									button#subTicket -
+									input#ticketInput.fill-w(type="number" value=0)
+									button#addTicket +
+								button#purchase.button-1.button-blue.button-fill purchase
+						div#invalidSelection
+							div please select a movie time slot
+
+
+	script(src='/js/buyTicketsPageFunctionality.js')
+	//- script(src='/js/RandomColorDivs.js')
+
+

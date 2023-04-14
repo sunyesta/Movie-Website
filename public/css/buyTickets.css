@@ -1,0 +1,52 @@
+.selected {
+	background-color: blue;
+}
+
+#ticketTable {
+}
+
+#ticketTable {
+	border-collapse: collapse;
+}
+
+#ticketTable tr {
+	/* border: none; */
+}
+
+#ticketTable td {
+	font-weight: bold;
+}
+
+#ticketTable td,
+#ticketTable th {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	/* border-top: solid 3px rgb(0, 0, 0); */
+	/* border-bottom: solid 3px rgb(10, 10, 10); */
+}
+
+#ticketInput {
+	text-align: center;
+}
+
+#ticketInput::-webkit-inner-spin-button,
+#ticketInput::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+}
+
+#ticketsView {
+	text-align: center;
+	transition: 0.2s;
+	padding-top: 30px;
+	padding-bottom: 50px;
+}
+
+/* table,
+th,
+td {
+	border: 1px solid;
+}
+
+th {
+	background-color: aquamarine;
+} */

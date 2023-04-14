@@ -1,0 +1,52 @@
+extends /layouts/default.pug
+
+include ../components/moviePoster.pug
+
+
+block meta
+    meta(movieName = movie.name)
+
+block styleSheets 
+    link(rel="stylesheet" href="/css/movieInfo.css")
+
+block body 
+    div.flex.flex-center
+        div#main.flex.flex-col.flex-top.flex-align-center.child-margin-medium
+            .flex.flex-row-collapse.child-margin-small
+                div.flex.flex-col.flex-align-center.child-margin-small
+                    img(src=movie.posterURL).moviePoster.bevel.medium.glow
+                    table#movieInfo
+                        thead
+                            tr 
+                                th Genre
+                                th year
+                        tbody
+                            tr
+                                td #{movie.genre}
+                                td #{movie.releaseYear}
+
+                //- img.margin-small.bevel.small(src=movie.posterURL)
+                div.flex.flex-col.flex-center.flex-align-center
+                    h1.text-centered #{movie.name}
+                    - const ticketLink = "window.location.href='/home/"+movie.name+"';"
+                    button(onclick=ticketLink).margin-small.button-1.button-red.button-raise buy a ticket
+
+                    div#movieDescription #{movie.description}
+            iframe( height=350 modestbranding=1 showinfo=1 src=`https://www.youtube.com/embed/${movie.trailerURLid}?rel=0&controls=0&showinfo=0&autoplay=1&loop=1&modestbranding=1` ).bevel.fill-w.fit-content
+
+            table
+                tbody
+                    tr
+                        th Actors
+                        each actor in movie.artists.actors
+                            td #{actor}
+                    tr 
+                        th Writers
+                            each writer in movie.artists.writers
+                                td #{writer}
+                    tr 
+                        th Directors
+                            each director in movie.artists.directors
+                                td #{director}
+
+    script(src="/js/movieInfo.js")

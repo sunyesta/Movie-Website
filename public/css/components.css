@@ -1,0 +1,210 @@
+:root {
+	--nav-height: 100px;
+}
+
+.header__logo {
+	height: 200px;
+}
+
+.moviePoster {
+	display: inline-block;
+	aspect-ratio: calc(8 / 12);
+	min-width: fit-content; /*if you don't add this, the poster might get smooshed*/
+	min-height: fit-content;
+	object-fit: cover;
+	flex-shrink: 0;
+}
+
+.movieElem {
+	height: 300px;
+	aspect-ratio: calc(8 / 12);
+}
+
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.pullup-card {
+	background-color: transparent;
+}
+
+/* This container is needed to position the front and back side */
+.pullup-card-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+
+	/* transform-style:preserve-3d; */
+}
+
+/* Position the front and back side */
+.pullup-card-main,
+.pullup-card-pullup {
+	position: absolute;
+	box-shadow: none;
+}
+
+/* Style the front side (fallback if image is missing) */
+.pullup-card-main {
+	width: 100%;
+	height: 100%;
+}
+
+/* Style the back side */
+.pullup-card-pullup {
+	width: 100%;
+	top: 100%;
+	transform: translateY(0%);
+
+	transition: transform 0.4s cubic-bezier(0.64, 1.53, 0.4, 1);
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.pullup-card:hover .pullup-card-pullup {
+	transform: translateY(-100%);
+	box-shadow: 0px 0px 5px 10px rgba(0, 0, 0, 0.503);
+}
+
+#movieInfo {
+	border-collapse: collapse;
+}
+
+#movieInfo tr {
+	border: none;
+}
+
+#movieInfo td {
+	font-weight: bold;
+}
+
+#movieInfo td,
+#movieInfo th {
+	padding-left: 10px;
+	padding-right: 10px;
+	border-right: solid 3px rgb(0, 0, 0);
+	border-left: solid 3px rgb(10, 10, 10);
+}
+
+#logo-title {
+	color: white;
+	text-decoration: none;
+}
+
+.footer {
+	background-color: rgb(187, 161, 211);
+	margin-top: 10px;
+}
+
+#users-button {
+	clear: both;
+	width: 100%;
+	height: 0px;
+	overflow: hidden;
+	text-align: center;
+	transition: height 0.4s ease;
+}
+
+/* 
+.horizontal-line::before {
+	direction: rtl;
+} */
+
+.horizontal-line {
+	direction: ltr;
+	height: 5px;
+	width: 100%;
+	border-radius: 5px;
+	background-color: rgb(255, 255, 255);
+}
+
+.expand-left-wrapper {
+	direction: rtl;
+}
+
+.expand-left-wrapper > * {
+	direction: ltr;
+}
+
+#users-slide-wrapper {
+	top: 0px;
+	/* height: 0px; */
+	transform: translateY(-130%);
+	/* pointer-events: none; */
+	/* right: 15px; */
+	z-index: 50;
+}
+
+#header-wrapper {
+	top: 0;
+	position: sticky;
+	z-index: 999;
+}
+
+header {
+	position: relative;
+	z-index: 100;
+}
+
+#users-slide {
+	/* width: 100px; */
+
+	/* float: left; */
+	/* top: 10px; */
+
+	/* height: 30	px; */
+	width: fit-content;
+	background-color: rgba(166, 101, 173, 0.727);
+
+	overflow-y: hidden;
+	transition: transform 0.4s cubic-bezier(0.64, 1.53, 0.4, 1);
+}
+
+#users-btn:hover {
+	background: red;
+}
+
+.users-slide-translate {
+	transform: translateY(130%);
+}
+
+.tickets-selection-active {
+	width: 50%;
+}
+
+#movie-selection-frame {
+	/* overflow-x: scroll; */
+	width: 100%;
+	/* height: 50vh; */
+}
+
+#views-container {
+	width: 100%;
+	overflow: hidden;
+}
+
+#views {
+	width: 200%;
+	left: 0;
+	top: 0;
+	height: 80vh;
+	transition: transform 0.4s cubic-bezier(0.64, 1.53, 0.4, 1);
+	/* transform-origin: left top; */
+	transform: translateX(0);
+}
+
+#views > * {
+	height: 100%;
+	width: 50%;
+	overflow-y: scroll;
+}
+
+/* #views:hover {
+	transform: translateX(-50%);
+} */
+
+#userdata-table {
+	border-spacing: 20px 20px;
+}
+
+#userdata-table th {
+	/* background-color: rgb(106, 106, 106); */
+	border-radius: 10px;
+}

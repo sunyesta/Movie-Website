@@ -1,0 +1,25 @@
+extends /layouts/default.pug
+include /components/moviePoster.pug
+
+//- Page params: username, movies
+
+block body 
+    div.flex.flex-row.flex-center
+        .background-trans-black.flex.flex-col.flex-align-center.flex-center.bevel.margin-medium.padding-small 
+            h1.button-red.bevel.padding-small Your Information
+            table#userdata-table
+                tr
+                    th name
+                    td #{currentUser.name}
+                tr
+                    th username
+                    td #{currentUser.username}
+                tr
+                    th email
+                    td #{currentUser.email}
+                tr 
+                    th address
+                    td #{currentUser.address}
+                tr 
+                    th creditcard
+                    td #{currentUser.creditcard}

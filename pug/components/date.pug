@@ -1,0 +1,6 @@
+mixin time(date)
+    | #{date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit"})}
+
+
+mixin date(date)
+    | #{date.toLocaleDateString("en-US")}
