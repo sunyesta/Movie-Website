@@ -43,7 +43,7 @@ app.set("json spaces", 2);
 app.locals.basedir = path.join(__dirname, "/pug");
 
 // external packages
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + process.env.ROOT_PATH + "/public"));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: false })); //access form variables inside post method
 app.use(flash());
 app.use(
@@ -108,15 +108,11 @@ app.delete("/logout", (req, res) => {
 	});
 });
 
-// const router = express.Router();
-
-// router.use("/movieInfo", require("./routes/movieInfo"));
-// router.use("/users", require("./routes/users"));
+app.use("/movieInfo", require("./routes/movieInfo"));
+app.use("/users", require("./routes/users"));
 app.use("/", require("./routes/home"));
-// router.use("/tickets", require("./routes/tickets"));
-// router.use("/data", require("./routes/data"));
-
-// app.use(process.env.ROOT_PATH, router);
+app.use("/tickets", require("./routes/tickets"));
+app.use("/data", require("./routes/data"));
 
 // ------- start server
 app.listen(process.env.PORT, () => {
