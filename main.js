@@ -108,11 +108,14 @@ app.delete("/logout", (req, res) => {
 	});
 });
 
-app.use("/movieInfo", require("./routes/movieInfo"));
-app.use("/users", require("./routes/users"));
-app.use("/", require("./routes/home"));
-app.use("/tickets", require("./routes/tickets"));
-app.use("/data", require("./routes/data"));
+const router = express.Router();
+app.use(process.env.ROOT_PATH, router);
+
+router.use("/movieInfo", require("./routes/movieInfo"));
+router.use("/users", require("./routes/users"));
+router.use("/", require("./routes/home"));
+router.use("/tickets", require("./routes/tickets"));
+router.use("/data", require("./routes/data"));
 
 // ------- start server
 app.listen(process.env.PORT, () => {
