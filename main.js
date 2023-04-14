@@ -1,9 +1,14 @@
+const path = require("path");
+if (process.env.NODE_ENV == "production") {
+	console.log(__dirname);
+	// __dirname = "/home/group35/"+
+}
 console.log(`./.env.${process.env.NODE_ENV}`);
 require("dotenv").config({ path: `./.env.${process.env.NODE_ENV}` });
 
 const express = require("express");
 const app = express();
-const path = require("path");
+
 const sqlite3 = require("sqlite3").verbose();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
