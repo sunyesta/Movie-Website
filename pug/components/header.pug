@@ -2,7 +2,7 @@ mixin slideWrapper()
 	div#users-slide-wrapper
 		div#users-slide.flex.flex-col.flex-align-center.padding-small.child-margin-tiny.bevel
 			div.flex.flex-row.child-margin-tiny
-				a(href="/users/ticket-history")
+				a(href=root+"/users/ticket-history")
 					button.button-1.button-fill.button-blue Purchase History
 				- let profileLink = `/users/profile`
 				a(href=profileLink)
@@ -26,14 +26,14 @@ mixin slideWrapper()
 						button(style = {"margin-left":"10px"} type="submit").button-1.button-fill.button-red
 							i.fa.fa-sign-out-alt.fa-solid
 
-			a(href="/users/login").fill-w
+			a(href=root+"/users/login").fill-w
 				button.button-1.button-fill.button-blue.fill-w +
 
 div#header-wrapper
 	header#top.flex.flex-start.flex-row.flex-spread-max.red-to-blue.bevel(style="height:70px") 
 		div.flex.flex-row.flex-center.fill-h
 
-			a.flex.flex-row.flex-center.fill-h.margin-medium(href="/home")
+			a.flex.flex-row.flex-center.fill-h.margin-medium(href=root+"/home")
 				img.margin-small.fill-h(src="/images/logo.png")
 				h1#logo-title.text-white XD Movies
 		div.margin-medium
@@ -61,7 +61,7 @@ div#header-wrapper
 
 
 			else
-				a#signup(href="/users/login")
+				a#signup(href=root+"/users/login")
 					button.button-1.button-grey.button-fill signup/login
 
 
