@@ -7,7 +7,7 @@ block meta
 	meta(movie=movie)
 
 block body
-	- const movieLink = "window.location.href='/movieInfo/"+movie.name+"';"
+	- const movieLink = "window.location.href='"+root+"/movieInfo/"+movie.name+"';"
 
 	div.flex.flex-col
 
@@ -51,7 +51,6 @@ block body
 							div please select a movie time slot
 
 
-	script(src='/js/buyTicketsPageFunctionality.js')
-	//- script(src='/js/RandomColorDivs.js')
+	script(src=root+'/js/buyTicketsPageFunctionality.js')
 
 

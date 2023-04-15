@@ -9,7 +9,7 @@ block meta
 block content 
 
 	div.flex.flex-row.flex-start.stretch
-		- let movieEditLink = "/home/"+ticketData.movieName
+		- let movieEditLink = root+"/home/"+ticketData.movieName
 		a(href=movieEditLink)
 			button.button-1.button-red
 				i.fa.fa-arrow-left.fa-fw
@@ -31,4 +31,4 @@ block content
 		input(name = "ticketData" value=ticketData type="hidden") 
 		button(type = "submit" )#purchase.margin-medium.button-1.button-blue.button-fill purchase
 
-	script(src='/js/confirmTicketOrderFunc.js')
+	script(src=root+'/js/confirmTicketOrderFunc.js')

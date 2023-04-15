@@ -4,7 +4,7 @@ mixin slideWrapper()
 			div.flex.flex-row.child-margin-tiny
 				a(href=root+"/users/ticket-history")
 					button.button-1.button-fill.button-blue Purchase History
-				- let profileLink = `/users/profile`
+				- let profileLink = root+`/users/profile`
 				a(href=profileLink)
 					button.button-1.button-fill.button-blue
 						i.fa.fa-user
@@ -34,7 +34,7 @@ div#header-wrapper
 		div.flex.flex-row.flex-center.fill-h
 
 			a.flex.flex-row.flex-center.fill-h.margin-medium(href=root+"/home")
-				img.margin-small.fill-h(src="/images/logo.png")
+				img.margin-small.fill-h(src=root+"/images/logo.png")
 				h1#logo-title.text-white XD Movies
 		div.margin-medium
 
@@ -69,4 +69,4 @@ div#header-wrapper
 		+slideWrapper()
 
 
-script(src='/js/headerfunc.js')
+script(src=root+'/js/headerfunc.js')
