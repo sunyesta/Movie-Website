@@ -63,6 +63,14 @@ app.use(morgan("tiny"));
 
 // my packages
 app.use(passport_multiUserExtension());
+app.use((req, res, next) => {
+	if (process.env.NODE_ENV == "production") {
+		res.locals.root = "/group35";
+	} else {
+		res.locals.root = "";
+	}
+	next();
+});
 
 // routes
 app.get("/index", (req, res) => {
