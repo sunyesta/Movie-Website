@@ -85,7 +85,7 @@ app.post(
 	"/login",
 	passport.authenticate("local", {
 		// successRedirect: "/home",
-		failureRedirect: root + "/users/login",
+		failureRedirect: res.locals.root + "/users/login",
 		failureFlash: true,
 	}),
 	(req, res) => {
