@@ -2,7 +2,7 @@ function checkAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) {
 		return next();
 	} else {
-		res.redirect("/users/login");
+		res.redirect(res.locals.root + "/users/login");
 	}
 
 	// return next();
@@ -10,7 +10,7 @@ function checkAuthenticated(req, res, next) {
 
 function checkNotAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) {
-		res.redirect("/home");
+		res.redirect(res.locals.root + "/home");
 	} else {
 		return next();
 	}

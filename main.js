@@ -93,7 +93,7 @@ app.post(
 
 		const curPath = req.get("referer");
 		if (curPath == "/users/login") {
-			res.redirect("/home");
+			res.redirect(res.locals.root + "/home");
 		} else {
 			res.redirect(curPath);
 		}
@@ -103,7 +103,7 @@ app.post(
 app.post("/dummy-logout", (req, res) => {
 	console.log("give user = ", req.body.username);
 	req.updateUsersCookie(req, res, req.body.username);
-	res.redirect("/home");
+	res.redirect(res.locals.root + "/home");
 });
 
 // logout function

@@ -54,10 +54,10 @@ router.post("/register", async (req, res) => {
 			address,
 			creditcard
 		);
-		res.redirect("/users/login");
+		res.redirect(res.locals.root + "/users/login");
 		console.log("success");
 	} catch (err) {
-		res.render("users/register", { error: err });
+		res.render(res.locals.root + "users/register", { error: err });
 	}
 });
 
@@ -75,7 +75,7 @@ router.post(
 	(req, res) => {
 		req.updateUsersCookie(req, res, req.user, req.user); //headerMiddleware function
 
-		res.redirect("/home");
+		res.redirect(res.locals.root + "/home");
 	}
 );
 

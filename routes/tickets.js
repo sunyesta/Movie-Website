@@ -106,7 +106,7 @@ router.post("/buy", checkAuthentication.registered, (req, res) => {
 		ticketData.moviePosterURL,
 		ticketData.tickets
 	);
-	res.redirect("/tickets/orderComplete");
+	res.redirect(res.locals.root + "/tickets/orderComplete");
 });
 
 module.exports = router;
