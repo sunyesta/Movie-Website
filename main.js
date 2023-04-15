@@ -45,7 +45,7 @@ app.set("json spaces", 2);
 app.locals.basedir = path.join(__dirname, "/pug");
 
 // external packages
-app.use("/group35", express.static("/data/home/group35/Movie-Website/public"));
+app.use(express.static("http://webtech.science.uu.nl/group35/"));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: false })); //access form variables inside post method
 app.use(flash());
 app.use(
