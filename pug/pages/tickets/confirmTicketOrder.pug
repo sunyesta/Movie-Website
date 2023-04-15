@@ -27,7 +27,7 @@ block content
 				| 
 				+time(ticketData.date)
 			h2 tickets: #{ticketData.tickets}
-	form(action="/tickets/buy" method="POST")
+	form(action=root+"/tickets/buy" method="POST")
 		input(name = "ticketData" value=ticketData type="hidden") 
 		button(type = "submit" )#purchase.margin-medium.button-1.button-blue.button-fill purchase
 

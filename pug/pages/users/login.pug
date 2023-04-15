@@ -3,7 +3,7 @@ extends /layouts/default.pug
 block body  
 
     div.flex.flex-row-collapse.flex-center.flex-spread-centered
-        form(action="/users/login" method="POST")
+        form(action=root+"/users/login" method="POST")
             div.flex.flex-col.flex-center.flex-align-center.child-margin-medium.background-trans-black.bevel.margin-medium(style = "width:300px")
                 h1 Login
                 div#login-error-message

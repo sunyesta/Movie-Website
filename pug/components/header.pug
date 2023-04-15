@@ -8,7 +8,7 @@ mixin slideWrapper()
 				a(href=profileLink)
 					button.button-1.button-fill.button-blue
 						i.fa.fa-user
-			form(action="/logout?_method=DELETE" method="POST").fill-w
+			form(action=root+"/logout?_method=DELETE" method="POST").fill-w
 				button(type = "submit").button-2.button-fill.button-red.fill-w logout
 
 			div.horizontal-line
@@ -17,11 +17,11 @@ mixin slideWrapper()
 				if user.username == currentUser.username
 					- continue
 				div.flex.flex-row.flex-center.fill-w.flex-spread-max
-					form(action="/login" method="POST").fill-w
+					form(action=root+"/login" method="POST").fill-w
 						input(type="hidden" name="username" value=user.username)
 						input(type="hidden" name="password" value=user.password)
 						button(type="submit").button-1.button-fill.button-blue.flex-grow.fill-w #{user.name}
-					form(action="/dummy-logout" method="POST")
+					form(action=root+"/dummy-logout" method="POST")
 						input(type="hidden" name="username" value=user.username)
 						button(style = {"margin-left":"10px"} type="submit").button-1.button-fill.button-red
 							i.fa.fa-sign-out-alt.fa-solid
