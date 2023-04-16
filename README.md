@@ -61,17 +61,18 @@ URL: http://webtech.science.uu.nl/group35/
 
 # Demo User Logins
 
+WARNING: These logins are guarenteed to be on the deployed site but may not be present in this version.
 | username | password |
 | -------- | -------- |
-| a        | a        |
-| b        | b        |
-| c        | c        |
-| d        | d        |
-| e        | e        |
+| a | a |
+| b | b |
+| c | c |
+| d | d |
+| e | e |
 
 # Deployment
 
-## Accessing the Utrecht University server
+## Accessing the Utrecht University Server
 
 ### 1. In Terminal:
 
