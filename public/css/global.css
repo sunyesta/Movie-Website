@@ -1,5 +1,9 @@
 /* defaults */
 
+:root {
+	--change-size: 900px;
+}
+
 * {
 	font-family: "Sawarabi Gothic";
 }
@@ -124,7 +128,7 @@ a:visited {
 	height: 30vh;
 	width: auto;
 }
-@media (orientation: portrait) {
+@media (max-width: 900px) {
 	.small {
 		max-height: 40vh;
 		height: auto;
@@ -135,7 +139,7 @@ a:visited {
 	height: 50vh;
 	width: auto;
 }
-@media (orientation: portrait) {
+@media (max-width: 900px) {
 	.medium {
 		height: auto;
 		max-height: 80vh;
@@ -241,7 +245,7 @@ a:visited {
 	align-self: stretch;
 }
 
-@media (orientation: portrait) {
+@media (max-width: 900px) {
 	.flex-row-collapse {
 		flex-direction: column;
 		align-items: center;

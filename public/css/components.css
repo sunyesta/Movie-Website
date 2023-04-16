@@ -157,10 +157,6 @@ header {
 	transition: transform 0.4s cubic-bezier(0.64, 1.53, 0.4, 1);
 }
 
-#users-btn:hover {
-	background: red;
-}
-
 .users-slide-translate {
 	transform: translateY(130%);
 }

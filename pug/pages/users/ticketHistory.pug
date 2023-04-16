@@ -8,7 +8,7 @@ block body
             each td in ticketDatas
                 div.flex.flex-row-collapse.flex-center.flex-align-center.child-margin-small.flex-spread-max.background-trans-black.margin-small.bevel(style={width:"50vw"})
                     div.flex.flex-col.flex-center.fill-h
-                        div.flex.flex-row-collapse.child-margin-small
+                        div.flex.flex-row-collapse.child-margin-small.flex-align-center
                             +date(td.purchaseDate)
                             img(src=td.moviePosterURL).moviePoster.fill-h.small.bevel
                     div.flex.flex-col.flex-center.flex-align-center.stretch.flex-grow
