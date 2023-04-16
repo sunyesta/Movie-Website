@@ -278,6 +278,16 @@ a:visited {
 	);
 }
 
+.background-glassy {
+	background: linear-gradient(
+		to right,
+		#2253f6 -50%,
+		#3f3f3fe0 40%,
+		#3f3f3fe0 60%,
+		#d70466 150%
+	);
+}
+
 .text-white {
 	color: rgb(178, 186, 194);
 }
