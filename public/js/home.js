@@ -3,7 +3,7 @@ const viewsElem = document.getElementById("views");
 const ticketPageView = document.getElementById("tickets-view");
 const moviesPageView = document.getElementById("movies-view");
 const views = { movies: "movies", tickets: "tickets" };
-
+const root = document.querySelector("meta[name = root]").content;
 // global variables
 
 // config
@@ -144,12 +144,13 @@ function loadMovieByName(name) {
 			}
 			const movie = JSON.parse(response);
 			// console.log(movies);
+			if (movie) {
+				addMovieElem(movie);
+				organiseTimeSlots(movie);
+				loadedMovies[movie.name] = movie;
+				moviesPageView.scrollTop = moviesPageView.scrollHeight;
+			}
 
-			addMovieElem(movie);
-			organiseTimeSlots(movie);
-			loadedMovies[movie.name] = movie;
-
-			moviesPageView.scrollTop = moviesPageView.scrollHeight;
 			resolve(true);
 		};
 
@@ -300,9 +301,11 @@ document.getElementById("subTicket").onclick = () => {
 	setTicketVal(+ticketInput.value - 1);
 };
 
+console.log("root = ", root);
 document.getElementById("purchase").onclick = () => {
 	window.location.pathname =
-		"tickets/confirm/" +
+		root +
+		"/tickets/confirm/" +
 		curMovie.name +
 		"/" +
 		ticketInput.value +
