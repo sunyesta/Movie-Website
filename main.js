@@ -90,7 +90,7 @@ app.post(
 			failureRedirect: res.locals.root + "/users/login",
 			failureFlash: true,
 		});
-		passFunc();
+		passFunc(req, res);
 		next();
 	},
 
