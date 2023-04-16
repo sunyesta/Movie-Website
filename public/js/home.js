@@ -44,7 +44,7 @@ function checkAuthentication() {
 		isAuthenticated = this.responseText === "true";
 		console.log("isAuthenticated", isAuthenticated, this.responseText);
 	};
-	xhttp.open("GET", `/data/authorize`);
+	xhttp.open("GET", `${root}/data/authorize`);
 	xhttp.send();
 }
 
@@ -126,7 +126,7 @@ function loadMovies() {
 		moviesPageView.scrollTop = moviesPageView.scrollHeight;
 	};
 	const newLastMovie = lastMovie + movieIncrement;
-	xhttp.open("GET", `/data/movies/range/${lastMovie}/${newLastMovie}`);
+	xhttp.open("GET", `${root}/data/movies/range/${lastMovie}/${newLastMovie}`);
 	console.log("got movies: ", lastMovie, newLastMovie);
 	lastMovie = newLastMovie;
 	xhttp.send();
@@ -154,7 +154,7 @@ function loadMovieByName(name) {
 			resolve(true);
 		};
 
-		xhttp.open("GET", `/data/movies/name/${name}`);
+		xhttp.open("GET", `${root}/data/movies/name/${name}`);
 		xhttp.send();
 	});
 }

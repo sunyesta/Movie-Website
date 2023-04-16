@@ -1,3 +1,5 @@
+const root = document.querySelector("meta[name = root]").content;
+
 const movieName = document
 	.querySelector("meta[movieName]")
 	.getAttribute("movieName");
@@ -20,7 +22,7 @@ function loadMovieByName(name) {
 			resolve(movie);
 		};
 
-		xhttp.open("GET", `/data/movies/name/${name}`);
+		xhttp.open("GET", `${root}/data/movies/name/${name}`);
 		xhttp.send();
 	});
 }
