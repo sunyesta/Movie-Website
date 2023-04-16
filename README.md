@@ -41,6 +41,45 @@ The website is protected against SQL injections and Cross-site scripting.
 | timeslots TEXT            | JSON array of all movie timeslots as JSON dates |
 | artists TEXT              | JSON of all artists {directors,actors, writers} |
 
+```js
+sql = `
+    CREATE TABLE IF NOT EXISTS users (
+        username VARCHAR(255) PRIMARY KEY,
+        password VARCHAR(255),
+        name VARCHAR(255),
+		email VARCHAR(255),
+		address TEXT,
+		creditcard VARCHAR(255)
+		
+    );`;
+db.run(sql);
+
+sql = `
+    CREATE TABLE IF NOT EXISTS orderData (
+        id INTEGER PRIMARY KEY,
+        data TEXT,
+        username VARCHAR,
+        FOREIGN KEY (username)  REFERENCES users (username)
+
+    );`;
+db.run(sql);
+
+sql = `
+    CREATE TABLE IF NOT EXISTS movies (
+        id INTEGER PRIMARY KEY,
+        name VARCHAR(255) ,
+        posterURL TEXT,
+        description TEXT,
+        genre VARCHAR(255),
+        trailerURLid VARCHAR(255),
+        releaseYear INTEGER,
+        timeslots TEXT,
+		artists TEXT
+
+    );`;
+db.run(sql);
+```
+
 ### File Contents
 
 All HTML, CSS, and JS files have comments at the top, and all JS methods and variables have dedicated comments explaining their purpose.
