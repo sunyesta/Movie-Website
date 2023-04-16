@@ -54,8 +54,8 @@ function addMovieElem(movie) {
 	if (loadedMovies[movie.name]) {
 		return;
 	}
-	let ticketURL = "/tickets/movies/" + movie.name;
-	let infoPageURL = "/movieInfo/" + movie.name;
+	let ticketURL = root + "/tickets/movies/" + movie.name;
+	let infoPageURL = root + "/movieInfo/" + movie.name;
 
 	const newMovieElem = document.createElement("div");
 	newMovieElem.setAttribute("name", movie.name);
