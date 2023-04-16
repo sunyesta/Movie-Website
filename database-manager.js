@@ -6,13 +6,26 @@ require("dotenv").config();
 
 // create db file if file not found
 var fs = require("fs");
-fs.openSync(process.env.DATABASE_URL, "w");
 
-const db = new sqlite3.Database(
-	process.env.DATABASE_URL,
-	sqlite3.OPEN_READWRITE,
-	handleErr
-);
+const [db, isNew] = openDB();
+if (isNew) {
+	resetMovies();
+}
+
+function openDB() {
+	const isNew = !fs.existsSync(process.env.DATABASE_URL);
+	if (isNew) {
+		fs.openSync(process.env.DATABASE_URL, "w");
+	}
+	return [
+		new sqlite3.Database(
+			process.env.DATABASE_URL,
+			sqlite3.OPEN_READWRITE,
+			handleErr
+		),
+		isNew,
+	];
+}
 
 // --- config
 sql = `PRAGMA foreign_keys = ON;`;
