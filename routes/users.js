@@ -69,7 +69,7 @@ router.post(
 	"/login",
 	passport.authenticate("local", {
 		// successRedirect: "/home",
-		failureRedirect: root + "/users/login",
+		failureRedirect: "/users/login",
 		failureFlash: true,
 	}),
 	(req, res) => {

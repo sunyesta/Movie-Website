@@ -83,21 +83,29 @@ app.get("/api", (req, res) => {
 
 app.post(
 	"/login",
-	passport.authenticate("local", {
-		// successRedirect: "/home",
-		failureRedirect: "/users/login",
-		failureFlash: true,
-	}),
+
+	(req, res, next) => {
+		const passFunc = passport.authenticate("local", {
+			//on failure
+			failureRedirect: res.locals.root + "/users/login",
+			failureFlash: true,
+		});
+		passFunc();
+		next();
+	},
+
+	// on success
 	(req, res) => {
 		req.updateUsersCookie(req, res, req.user, req.user); //headerMiddleware function
 
 		const curPath = req.get("referer");
-		// if (curPath == "/users/login") {
 
-		// } else {
-		// 	res.redirect(curPath);
-		// }
-		res.redirect(res.locals.root + "/home");
+		//if logging in from the login screen, the user should be direcred back to the home page
+		if (curPath == "/users/login") {
+			res.redirect(res.locals.root + "/home");
+		} else {
+			res.redirect(curPath);
+		}
 	}
 );
 
