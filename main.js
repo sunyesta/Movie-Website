@@ -85,18 +85,19 @@ app.post(
 	"/login",
 	passport.authenticate("local", {
 		// successRedirect: "/home",
-		failureRedirect: res.locals.root + "/users/login",
+		failureRedirect: "/users/login",
 		failureFlash: true,
 	}),
 	(req, res) => {
 		req.updateUsersCookie(req, res, req.user, req.user); //headerMiddleware function
 
 		const curPath = req.get("referer");
-		if (curPath == "/users/login") {
-			res.redirect(res.locals.root + "/home");
-		} else {
-			res.redirect(curPath);
-		}
+		// if (curPath == "/users/login") {
+
+		// } else {
+		// 	res.redirect(curPath);
+		// }
+		res.redirect(res.locals.root + "/home");
 	}
 );
 
