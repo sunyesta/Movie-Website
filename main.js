@@ -73,8 +73,8 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.get("/index", (req, res) => {
-	res.render("home");
+app.get("/", (req, res) => {
+	res.redirect(res.locals.root + "/home");
 });
 
 app.get("/api", (req, res) => {
@@ -128,7 +128,7 @@ app.delete("/logout", (req, res) => {
 
 app.use("/movieInfo", require("./routes/movieInfo"));
 app.use("/users", require("./routes/users"));
-app.use("/", require("./routes/home"));
+app.use("/home", require("./routes/home"));
 app.use("/tickets", require("./routes/tickets"));
 app.use("/data", require("./routes/data"));
 

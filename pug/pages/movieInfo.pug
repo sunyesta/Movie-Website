@@ -27,7 +27,7 @@ block body
 
                 div.flex.flex-col.flex-center.flex-align-center
                     h1.text-centered #{movie.name}
-                    - const ticketLink = "window.location.href="+root+"/home/"+movie.name+"';" 
+                    - const ticketLink = "window.location.href='"+root+"/home/"+movie.name+"';" 
                     button(onclick=ticketLink).margin-small.button-1.button-red.button-raise buy a ticket
 
                     div#movieDescription #{movie.description}
