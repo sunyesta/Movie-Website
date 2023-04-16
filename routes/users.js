@@ -1,21 +1,25 @@
+/**
+ * Users router
+ */
+
+// packages
 const express = require("express");
 const router = express.Router();
-
-// const users = require("../database/users");
-// const movies = require("../database/movies");
 const dbManager = require("../database-manager");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const checkAuthentication = require("../checkAuthentication");
 
-router.get("/", (req, res) => {
-	res.json(users);
-});
-
+/**
+ * renders the user's profile page
+ */
 router.get("/profile", checkAuthentication.registered, (req, res) => {
 	res.render("users/profile");
 });
 
+/**
+ * render's the client's ticket history page
+ */
 router.get("/ticket-history", checkAuthentication.registered, (req, res) => {
 	const ticketHistory = dbManager.funcs
 		.getTicketHistory(req.user.username)
@@ -28,10 +32,16 @@ router.get("/ticket-history", checkAuthentication.registered, (req, res) => {
 		});
 });
 
+/**
+ * renders the register page
+ */
 router.get("/register", (req, res) => {
 	res.render("users/register");
 });
 
+/**
+ * registers a user and redirects the client back to the login page
+ */
 router.post("/register", async (req, res) => {
 	try {
 		const username = req.body.username,
@@ -61,10 +71,16 @@ router.post("/register", async (req, res) => {
 	}
 });
 
+/**
+ * renders the login page
+ */
 router.get("/login", (req, res) => {
 	res.render("users/login");
 });
 
+/**
+ * logs in a client
+ */
 router.post(
 	"/login",
 	(req, res, next) => {

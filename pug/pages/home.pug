@@ -28,7 +28,9 @@ mixin movieSelectionView()
             +movieElem()
 
         //- right row
-        button#more-movies-btn.button-1.button-red.margin-small.button-fill more movies
+        div.flex.flex-row
+            button#prev-movies-btn.button-1.button-red.margin-small.button-fill.fa.fa-caret-left
+            button#next-movies-btn.button-1.button-red.margin-small.button-fill.fa.fa-caret-right
 
 
 //- Blocks

@@ -1,8 +1,17 @@
+/**
+ * Passport configuration
+ */
+
 const LocalStrategy = require("passport-local").Strategy;
 const { authenticate } = require("passport");
 
 const bcrypt = require("bcrypt");
 
+/**
+ * ilitializes the passport instance
+ * @param {obj} passport the passport instance
+ * @param {function} getUserByUsername function that gets the user object by their username
+ */
 function initialize(passport, getUserByUsername) {
 	const authenticateUser = async (username, password, done) => {
 		const user = await getUserByUsername(username);

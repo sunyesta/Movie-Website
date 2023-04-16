@@ -1,5 +1,11 @@
-// You could easily add more colors to this array.
+/**
+ * FOR DEBUG ONLY
+ * sets divs to random colors
+ */
 
+/**
+ * sets divs to random colors
+ */
 function randomColorDivs() {
 	var boxes = document.querySelectorAll("div");
 	// var button = document.querySelector("button");
@@ -20,12 +26,7 @@ function randomColorDivs() {
 		if (randomColor == "#ffffff") {
 			randomColor = "#000000";
 		}
-		// <!-- document.body.style.backgroundColor = "#" + randomColor; -->
-		// <!-- color.innerHTML = "#" + randomColor; -->
-		// Pick a random color from the array 'colors'.
 		boxes[i].style.backgroundColor = randomColor;
 	}
 }
 randomColorDivs();
-
-// button.style.cursor = "pointer";

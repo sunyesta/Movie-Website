@@ -1,3 +1,7 @@
+/**
+ * Home page client side js
+ */
+
 // global constants
 const viewsElem = document.getElementById("views");
 const ticketPageView = document.getElementById("tickets-view");
@@ -10,10 +14,10 @@ const root = document.querySelector("meta[name = root]").content;
 const minTickets = 1,
 	maxTickets = 100;
 let isAuthenticated;
-
+let movieElems = [];
 // ---- movies view ----
 const movieIncrement = 3;
-const loadedMovies = {};
+let loadedMovies = {};
 const movieElemTemplate = document.getElementById("movieElemTemplate");
 const moviesContainer = document.getElementById("movie-selection-frame");
 const movieName = document
@@ -30,12 +34,21 @@ if (movieName) {
 }
 
 let lastMovie = 0;
+let startMovie = 0;
+let moviesPerPage = 10;
 
-loadMovies();
+// loadMovies();
 checkAuthentication();
 
-document.getElementById("more-movies-btn").onclick = function () {
-	loadMovies();
+let page = 0;
+loadMovies(page);
+document.getElementById("next-movies-btn").onclick = function () {
+	page += 1;
+	loadMovies(page);
+};
+document.getElementById("prev-movies-btn").onclick = function () {
+	page -= 1;
+	loadMovies(page);
 };
 
 function checkAuthentication() {
@@ -71,6 +84,7 @@ function addMovieElem(movie) {
 	};
 
 	moviesContainer.appendChild(newMovieElem);
+	return newMovieElem;
 }
 
 function organiseTimeSlots(movie) {
@@ -111,24 +125,49 @@ function organiseTimeSlots(movie) {
 	console.log(movie.name, organizedTimeSlots[2]);
 }
 
-function loadMovies() {
+let prevPage = 0;
+function loadMovies(newPage) {
 	//adds movie.organisedTimeSlots to the movie
+	loadedMovies = {};
 
 	const xhttp = new XMLHttpRequest();
 	xhttp.onload = function () {
 		const movies = JSON.parse(this.responseText);
+		console.log("movies =", movies);
+		if (movies.length == 0) {
+			console.log("done");
+			page = prevPage;
+			return;
+		}
+		prevPage = newPage;
+
+		console.log("movieElems = ", movieElems);
+		movieElems.forEach((movieElem) => {
+			if (!movieElem) {
+				return;
+			}
+			console.log("elems removed");
+			movieElem.remove();
+		});
+		movieElems = [];
+
 		// console.log(movies);
 		movies.forEach((movie) => {
-			addMovieElem(movie);
+			movieElems.push(addMovieElem(movie));
 			organiseTimeSlots(movie);
 			loadedMovies[movie.name] = movie;
 		});
 		moviesPageView.scrollTop = moviesPageView.scrollHeight;
 	};
-	const newLastMovie = lastMovie + movieIncrement;
-	xhttp.open("GET", `${root}/data/movies/range/${lastMovie}/${newLastMovie}`);
-	console.log("got movies: ", lastMovie, newLastMovie);
-	lastMovie = newLastMovie;
+	// const newLastMovie = lastMovie + movieIncrement;
+	const startMovie = newPage * moviesPerPage;
+	xhttp.open(
+		"GET",
+		`${root}/data/movies/range/${startMovie + 1}/${
+			startMovie + 1 + moviesPerPage
+		}`
+	);
+
 	xhttp.send();
 }
 
@@ -145,7 +184,7 @@ function loadMovieByName(name) {
 			const movie = JSON.parse(response);
 			// console.log(movies);
 			if (movie) {
-				addMovieElem(movie);
+				movieElems.push(addMovieElem(movie));
 				organiseTimeSlots(movie);
 				loadedMovies[movie.name] = movie;
 				moviesPageView.scrollTop = moviesPageView.scrollHeight;

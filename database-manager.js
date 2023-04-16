@@ -1,3 +1,8 @@
+/**
+ * Opens the database on the server and provides database utility functions for the database
+ */
+
+// packages
 const sqlite3 = require("sqlite3").verbose();
 const { reject } = require("bcrypt/promises");
 const dbUtils = require("./dbUtils");

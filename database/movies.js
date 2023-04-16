@@ -348,4 +348,28 @@ module.exports = [
 		writers: ["Ray Nelson", "John Carpenter"],
 		directors: ["John Carpenter"],
 	}),
+	new Movie({
+		title: "They The Super Mario Bros. Movie",
+		poster:
+			"https://dx35vtwkllhj9.cloudfront.net/universalstudios/super-mario-bros/images/gallery/image1.jpg",
+		genre: ["action", "comedy"],
+		description: "MARIOOOOOOOOOOOOOOO",
+		releaseYear: 2023,
+		trailer: "TnGl01FkMMo",
+		actors: ["Anya Taylor-Joy", "Charlie Day", "Chris Pratt"],
+		writers: ["Coola Gord", "John Gord"],
+		directors: ["Matthew Fogel"],
+	}),
+	new Movie({
+		title: "The Mitchells vs. the Machines",
+		poster:
+			"https://m.media-amazon.com/images/M/MV5BMjdkZjNjNDItYzc4MC00NTkxLTk1MWEtY2UyZjY5MjUwNDNkXkEyXkFqcGdeQXVyMTA1OTcyNDQ4._V1_.jpg",
+		genre: ["action", "comedy"],
+		description: "Mitchells fight the machines!",
+		releaseYear: 2021,
+		trailer: "ak5dFt8Ar0",
+		actors: ["Gorgy Arma", "Safron Day", "Stella Prattitia"],
+		writers: ["Das Sorwy", "Jally Err"],
+		directors: ["Ten FogSel"],
+	}),
 ];

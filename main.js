@@ -1,14 +1,12 @@
-const path = require("path");
-if (process.env.NODE_ENV == "production") {
-}
-// __dirname=""
-console.log("new dir name = ", __dirname);
-console.log(`./.env.${process.env.NODE_ENV}`);
-require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` });
+/**
+ * main file for server
+ */
 
+// packages
+require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` });
+const path = require("path");
 const express = require("express");
 const app = express();
-
 const sqlite3 = require("sqlite3").verbose();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -37,7 +35,6 @@ initPassport(
 );
 
 // app config
-
 app.set("views", path.join(__dirname, "/pug/pages"));
 app.set("view engine", "pug");
 app.set("json spaces", 2);
@@ -108,13 +105,18 @@ app.post(
 	}
 );
 
+/**
+ * logs out an inactive user
+ */
 app.post("/dummy-logout", (req, res) => {
 	console.log("give user = ", req.body.username);
 	req.updateUsersCookie(req, res, req.body.username);
 	res.redirect(res.locals.root + "/home");
 });
 
-// logout function
+/**
+ * logs out an active user
+ */
 app.delete("/logout", (req, res) => {
 	req.updateUsersCookie(req, res, req.user.username);
 
@@ -132,9 +134,9 @@ app.use("/home", require("./routes/home"));
 app.use("/tickets", require("./routes/tickets"));
 app.use("/data", require("./routes/data"));
 
-// ------- start server
+/**
+ * starts the server
+ */
 app.listen(process.env.PORT, () => {
 	console.log(`Server started on port ${process.env.PORT}`);
 });
-
-// pm2 start 'Homework 3 jade/main.js'

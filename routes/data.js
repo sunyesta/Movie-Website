@@ -1,10 +1,18 @@
+/**
+ * Data router config
+ */
+
+// global variables
 const express = require("express");
 const router = express.Router();
 const checkAuthentication = require("../checkAuthentication");
-
-// const movies = require("../database/movies");
 const dbManager = require("../database-manager");
 
+// routes
+
+/**
+ * get the movies from the database between a start and end range
+ */
 router.get("/movies/range/:start/:end", (req, res) => {
 	const start = req.params.start,
 		end = +req.params.end;
@@ -15,6 +23,9 @@ router.get("/movies/range/:start/:end", (req, res) => {
 	});
 });
 
+/**
+ * get a movie from the database by name
+ */
 router.get("/movies/name/:name", (req, res) => {
 	const start = req.params.start,
 		end = +req.params.end;
@@ -25,6 +36,9 @@ router.get("/movies/name/:name", (req, res) => {
 	});
 });
 
+/**
+ * client side authentication
+ */
 router.get("/authorize", (req, res) => {
 	if (req.isAuthenticated()) {
 		res.send("true");

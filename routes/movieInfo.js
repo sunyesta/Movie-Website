@@ -1,15 +1,23 @@
+/**
+ * movieInfo router config
+ */
+
+// global variables
 const express = require("express");
 const router = express.Router();
-
-// const movies = require("../database/movies");
 const dbManager = require("../database-manager");
 
+/**
+ * error page for no movie slected
+ */
 router.get("/", (req, res) => {
-	res.json(movies);
+	res.render("sendData", { data: "not a valid movie" });
 });
 
+/**
+ * shows the movie info page for a movie. Otherwise shows an error if the movie was not found in the database
+ */
 router.get("/:movieName", async (req, res) => {
-	// res.render("movieInfo");
 	const movie = await dbManager.funcs.getMovie(req.params.movieName);
 	if (movie) {
 		res.render("movieInfo", { movie: movie });

@@ -4,7 +4,7 @@ include /components/moviePoster.pug
 //- Page params: username, movies
 
 block body 
-    div.flex.flex-row.flex-center
+    div.flex.flex-col.flex-center.flex-align-center.margin-small
         .background-trans-black.flex.flex-col.flex-align-center.flex-center.bevel.margin-medium.padding-small 
             h1.button-red.bevel.padding-small Your Information
             table#userdata-table
@@ -23,3 +23,5 @@ block body
                 tr 
                     th creditcard
                     td #{currentUser.creditcard}
+        a(href=root+"/users/ticket-history")
+            button.button-1.button-blue Purchase History

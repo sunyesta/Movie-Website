@@ -1,3 +1,9 @@
+/**
+ * adds multi user functionality to passport
+ * NOTE: if you get an error where every page you go to is unauthorized (this happens if the database is reset while logged in), restart your cookies
+ */
+
+// packages
 const cookieParser = require("cookie-parser");
 const usersCookieName = "users";
 const passport = require("passport");
@@ -6,6 +12,13 @@ function resetUsers(req, res) {
 	res.cookie(usersCookieName, {}, { httpOnly: true });
 }
 
+/**
+ * Updates the users cookie for a user
+ * @param {} req
+ * @param {*} res
+ * @param {*} username username of the user we are updating
+ * @param {*} user user obj, NULL if you want to remove the user
+ */
 function updateUsersCookie(req, res, username, user) {
 	let cookie = req.cookies[usersCookieName];
 	if (!cookie) {
@@ -22,6 +35,9 @@ function updateUsersCookie(req, res, username, user) {
 }
 
 module.exports = function () {
+	/**
+	 * if no user is logged in, tries to log in the next user from the users cookie
+	 */
 	return function (req, res, next) {
 		// global variables
 		req.updateUsersCookie = updateUsersCookie;
@@ -30,7 +46,6 @@ module.exports = function () {
 		res.locals.users = req.cookies[usersCookieName] || {};
 		res.locals.currentUser = req.user || "";
 
-		// console.log("users = ", res.locals.users);
 		//vars
 		const prevUsername = req.body.username,
 			prevPass = req.body.password;
@@ -64,8 +79,6 @@ module.exports = function () {
 				next();
 				return;
 			}
-			// next();
-			// return;
 		}
 	};
 };

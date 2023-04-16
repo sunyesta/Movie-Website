@@ -1,3 +1,7 @@
+/**
+ * buyTickets page client side js
+ */
+
 // elements
 const selectionWrapper = document.getElementById("selectionWrapper");
 const validSelection = document.getElementById("validSelection");

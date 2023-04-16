@@ -1,11 +1,6 @@
-// if (
-// 	window.location.pathname == "/users/register" ||
-// 	window.location.pathname == "/users/login"
-// ) {
-// 	document.getElementById("signup").classList.add("none");
-// } else {
-// 	console.log(window.location.pathname);
-// }
+/**
+ * header client side js
+ */
 
 const usersSlide = document.getElementById("users-slide");
 const usersBtn = document.getElementById("users-btn");

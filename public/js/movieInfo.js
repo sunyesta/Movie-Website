@@ -1,3 +1,7 @@
+/**
+ * movieInfo page client side js
+ */
+
 const root = document.querySelector("meta[name = root]").content;
 
 const movieName = document

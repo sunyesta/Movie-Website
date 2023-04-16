@@ -1,18 +1,24 @@
+/**
+ * tickets router config
+ */
+
+// global variables
 const express = require("express");
 const router = express.Router();
 const dbManager = require("../database-manager");
-// const movies = require("../database/movies");
 const checkAuthentication = require("../checkAuthentication");
 
-router.get("/", async (req, res) => {
-	res.json(await dbManager.funcs.getMovieRange(0, 4));
-});
-
+/**
+ * render order complete page
+ */
 router.get("/orderComplete", (req, res) => {
 	res.render("tickets/thankyou");
 });
 
-//movie ticket page
+/**
+ * DEPRICATED
+ * render movie ticket page
+ */
 router.get(
 	"/movies/:movieName",
 	checkAuthentication.registered,
@@ -59,13 +65,14 @@ router.get(
 	}
 );
 
-// confirm order page
+/**
+ * renders the confirm order page for a movie
+ */
 router.get(
 	"/confirm/:movieName/:tickets/:slotID",
 	checkAuthentication.registered,
 	async (req, res) => {
 		const movie = await dbManager.funcs.getMovie(req.params.movieName);
-		console.log("MOVIE =", movie);
 		if (movie) {
 			const date = movie.timeSlots.find((slot) => {
 				console.log(slot);
@@ -94,6 +101,9 @@ router.get(
 	}
 );
 
+/**
+ * completes an order
+ */
 router.post("/buy", checkAuthentication.registered, (req, res) => {
 	// req.body.name
 	console.log("ticket data", req.body.ticketData);

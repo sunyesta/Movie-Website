@@ -1,3 +1,12 @@
+/**
+ * General database utility functions
+ */
+
+/**
+ * Prints a table in the database
+ * @param {sqlite3} db a database
+ * @param {string} tableName table name
+ */
 function printTable(db, tableName) {
 	sql = `SELECT * FROM ${tableName}`;
 	db.all(sql, [], (err, rows) => {
@@ -7,11 +16,21 @@ function printTable(db, tableName) {
 	});
 }
 
-function retErr(err, key) {
-	key = key + ": " || "";
-	if (err) return console.error(key + err.message);
+/**
+ * appends an identifier to an error statement
+ * @param {string} err error
+ * @param {string} identifier prints before error
+ * @returns
+ */
+function retErr(err, identifier) {
+	identifier = identifier + ": " || "";
+	if (err) return console.error(identifier + err.message);
 }
 
+/**
+ * prints all the table names in a database
+ * @param {sqlite3} db database
+ */
 function printTableNames(db) {
 	const sql = `
     SELECT 
@@ -45,6 +64,10 @@ function printTableNames(db) {
 	});
 }
 
+/**
+ * drops all the tables in a database
+ * @param {sqlite3} db database
+ */
 function dropTables(db) {
 	const sql = `
     SELECT 
