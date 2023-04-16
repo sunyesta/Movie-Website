@@ -98,11 +98,7 @@ document.getElementById("subTicket").onclick = () => {
 };
 
 document.getElementById("purchase").onclick = () => {
-	window.location.pathname =
-		"tickets/confirm/" +
-		movie.name +
-		"/" +
-		ticketInput.value +
-		"/" +
-		selectedButton.getAttribute("slotID");
+	window.location.pathname = `tickets/confirm/${movie.name}/${
+		ticketInput.value
+	}/${selectedButton.getAttribute("slotID")}`;
 };

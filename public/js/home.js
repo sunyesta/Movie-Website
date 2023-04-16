@@ -184,7 +184,7 @@ function loadTicketsPage(movie) {
 	ticketPageView.querySelector(".movie-name").innerText = movie.name;
 	ticketPageView.querySelector(".moviePoster").src = movie.posterURL;
 	ticketPageView.querySelector("#movie-info-button").onclick = function () {
-		window.location.pathname = `/movieInfo/${movie.name}`;
+		window.location.pathname = `${root}/movieInfo/${movie.name}`;
 	};
 	const ticketTable = ticketPageView.querySelector("#ticketTable");
 	ticketTable.innerHTML = "";
