@@ -1,4 +1,4 @@
-// Fills the database with movies (only called in DEBUG mode)
+// Fills the database with movies (needs to be called manually)
 
 const { Dir } = require("fs");
 
