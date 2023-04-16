@@ -1,9 +1,13 @@
 const sqlite3 = require("sqlite3").verbose();
 const { reject } = require("bcrypt/promises");
 const dbUtils = require("./dbUtils");
+
 require("dotenv").config();
 
-const moviesList = require("./database/movies");
+// create db file if file not found
+var fs = require("fs");
+fs.openSync(process.env.DATABASE_URL, "w");
+
 const db = new sqlite3.Database(
 	process.env.DATABASE_URL,
 	sqlite3.OPEN_READWRITE,
@@ -243,6 +247,7 @@ function delay(time) {
 }
 
 function resetMovies() {
+	const moviesList = require("./database/movies");
 	dbUtils.dropTables(db);
 	delay(1000).then(() => {
 		buildTables();
