@@ -109,7 +109,7 @@ router.post("/buy", checkAuthentication.registered, (req, res) => {
 	console.log("ticket data", req.body.ticketData);
 	const ticketData = JSON.parse(req.body.ticketData);
 
-	dbManager.funcs.addTicketData(
+	dbManager.funcs.addOrderData(
 		req.user.username,
 		ticketData.date,
 		ticketData.movieName,

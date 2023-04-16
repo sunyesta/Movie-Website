@@ -22,7 +22,7 @@ router.get("/profile", checkAuthentication.registered, (req, res) => {
  */
 router.get("/ticket-history", checkAuthentication.registered, (req, res) => {
 	const ticketHistory = dbManager.funcs
-		.getTicketHistory(req.user.username)
+		.getOrderHistory(req.user.username)
 		.then((history) => {
 			history = history.sort((a, b) => {
 				return b.purchaseDate - a.purchaseDate;

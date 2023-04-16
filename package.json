@@ -3,8 +3,8 @@
 	"version": "1.0.0",
 	"description": "",
 	"scripts": {
-		"prod": "NODE_ENV=production node main",
-		"dev": "NODE_ENV=development nodemon main",
+		"prod": "NODE_ENV=production node server",
+		"dev": "NODE_ENV=development nodemon server",
 		"startpug": "pug ./pug/pages -o ./src/html/ -P -w -b ./pug",
 		"pughelp": "pug -h",
 		"killserver": "lsof -t -i tcp:5002 | xargs kill"

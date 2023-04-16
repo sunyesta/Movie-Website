@@ -12,15 +12,46 @@ The backend of the website is built on Node.js (and its frameworks), and uses se
 
 The website is protected against SQL injections and Cross-site scripting.
 
-### Additional information
+### Database Structures
+
+| Users                             |                      |
+| --------------------------------- | -------------------- |
+| username VARCHAR(255) PRIMARY KEY | user username        |
+| password VARCHAR(255)             | user hashed password |
+| name VARCHAR(255)                 | user name            |
+| email VARCHAR(255)                | user email           |
+| address TEXT                      | user address         |
+| creditcard VARCHAR(255)           | user creditcard      |
+
+| Order Data             |                                                             |
+| ---------------------- | ----------------------------------------------------------- |
+| id INTEGER PRIMARY KEY | order id                                                    |
+| data TEXT              | JSON of order data: {date,movieName,moviePosterURL,tickets} |
+| username VARCHAR       | username of user who made the order                         |
+
+| Movies                    |                                                 |
+| ------------------------- | ----------------------------------------------- |
+| id INTEGER PRIMARY KEY    | movie id                                        |
+| name VARCHAR(255)         | movie name                                      |
+| posterURL TEXT            | movie poster URL                                |
+| description TEXT          | movie description                               |
+| genre VARCHAR(255)        | movie genre                                     |
+| trailerURLid VARCHAR(255) | youtube trailer id                              |
+| releaseYear INTEGER       | release year of movie                           |
+| timeslots TEXT            | JSON array of all movie timeslots as JSON dates |
+| artists TEXT              | JSON of all artists {directors,actors, writers} |
+
+### File Contents
 
 All HTML, CSS, and JS files have comments at the top, and all JS methods and variables have dedicated comments explaining their purpose.
+
+The server's main file is Server.js
 
 # Submission Info
 
 groupID: 35
 
-Authors: Mary Zlateva (1506730), Mampenda Jobarteh (4424646), Deniz Türksen
+Authors: Mary Zlateva (1506730), Mampenda Jobarteh (4424646), Deniz Türksen (9587098 )
 
 URL: http://webtech.science.uu.nl/group35/
 

@@ -54,7 +54,7 @@ function buildTables() {
 	db.run(sql);
 
 	sql = `
-    CREATE TABLE IF NOT EXISTS ticketData (
+    CREATE TABLE IF NOT EXISTS orderData (
         id INTEGER PRIMARY KEY,
         data TEXT,
         username VARCHAR,
@@ -99,7 +99,7 @@ function getData(sql) {
 	});
 }
 
-class TicketDataEntry {
+class OrderDataEntry {
 	constructor(date, movieName, moviePosterURL, tickets) {
 		this.movieDate = date;
 		this.movieName = movieName;
@@ -153,25 +153,25 @@ async function getUser(username) {
 //  console.log("USERRRRR:", user);
 // });
 
-function addTicketData(username, date, movieName, moviePosterURL, tickets) {
-	const newTicketDataEntry = new TicketDataEntry(
+function addOrderData(username, date, movieName, moviePosterURL, tickets) {
+	const newOrderDataEntry = new OrderDataEntry(
 		(date = date),
 		(movieName = movieName),
 		(moviePosterURL = moviePosterURL),
 		(tickets = tickets)
 	);
 
-	const sql = `INSERT INTO ticketData(username, data) VALUES(?,?)`;
+	const sql = `INSERT INTO orderData(username, data) VALUES(?,?)`;
 
-	db.run(sql, [username, JSON.stringify(newTicketDataEntry)], handleErr);
+	db.run(sql, [username, JSON.stringify(newOrderDataEntry)], handleErr);
 }
 
-// addTicketData("sunyesta", new Date(), "daf", 1);
+// addOrderData("sunyesta", new Date(), "daf", 1);
 
-async function getTicketHistory(username) {
-	const sql = `SELECT data FROM ticketData WHERE username = "${username}";`;
-	const ticketDatas = await getData(sql);
-	return ticketDatas.map((td) => {
+async function getOrderHistory(username) {
+	const sql = `SELECT data FROM orderData WHERE username = "${username}";`;
+	const orderDatas = await getData(sql);
+	return orderDatas.map((td) => {
 		let newTD = JSON.parse(td.data);
 		newTD.movieDate = new Date(newTD.movieDate);
 		newTD.purchaseDate = new Date(newTD.purchaseDate);
@@ -235,13 +235,13 @@ async function getMovieRange(min, max) {
 // 	console.log(movie);
 // });
 
-//test getTicketData
-// getTicketData("sunyesta").then((user) => {
+//test getOrderData
+// getOrderData("sunyesta").then((user) => {
 //  console.log("USERRRRR:", user);
 // });
 
 function useTicketHistory(userId, callback) {
-	const sql = `SELECT data FROM ticketData WHERE id = ${userId}`;
+	const sql = `SELECT data FROM orderData WHERE id = ${userId}`;
 	const result = db.all(sql, [], (err, rows) => {
 		handleErr(err);
 		callback();
@@ -251,8 +251,8 @@ function useTicketHistory(userId, callback) {
 funcs = {
 	addUser,
 	getUser,
-	addTicketData,
-	getTicketHistory,
+	addOrderData,
+	getOrderHistory,
 	getData,
 	getMovie,
 	getMovieRange,
@@ -284,10 +284,10 @@ function resetMovies() {
 
 // dbUtils.printTable(db, "movies");
 // addUser("sunyesta", "zzz");
-// addTicketData("sunyesta", new Date(), "dsf", "adf", 1);
+// addOrderData("sunyesta", new Date(), "dsf", "adf", 1);
 
 // dbUtils.printTableNames(db);
-// dbUtils.printTable(db, "ticketData");
+// dbUtils.printTable(db, "orderData");
 // dbUtils.printTable(db, "users");
 
 module.exports = { db, funcs };
