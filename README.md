@@ -73,7 +73,7 @@ URL: http://webtech.science.uu.nl/group35/
 
 ## Accessing the Utrecht University server
 
-### 1. In terminal:
+### 1. In Terminal:
 
 ```sh
 $ ssh 1506730@gemini.science.uu.nl
@@ -81,7 +81,7 @@ $ ssh 1506730@gemini.science.uu.nl
 
 password: University of Utrecht Portal Login password
 
-### 2. Once in server:
+### 2. Once in Server:
 
 ```sh
 $ ssh group35@webtech.science.uu.nl
@@ -95,13 +95,13 @@ this is a public password: webtech
 
 2. then use the keep alive method or the testing method
 
-### keep alive
+### Keep Alive
 
 ```sh
 $ pm2 start npm -- run prod
 ```
 
-### deploy test
+### Deploy Test
 
 ```sh
 $ npm run prod
