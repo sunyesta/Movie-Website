@@ -67,11 +67,14 @@ router.get("/login", (req, res) => {
 
 router.post(
 	"/login",
-	passport.authenticate("local", {
-		// successRedirect: "/home",
-		failureRedirect: "/users/login",
-		failureFlash: true,
-	}),
+	(req, res, next) => {
+		const passFunc = passport.authenticate("local", {
+			//on failure
+			failureRedirect: res.locals.root + "/users/login",
+			failureFlash: true,
+		});
+		passFunc(req, res, next);
+	},
 	(req, res) => {
 		req.updateUsersCookie(req, res, req.user, req.user); //headerMiddleware function
 
