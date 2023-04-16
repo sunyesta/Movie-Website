@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "",
 	"scripts": {
-		"start": "NODE_ENV=production node main",
+		"prod": "NODE_ENV=production node main",
 		"dev": "NODE_ENV=development nodemon main",
 		"startpug": "pug ./pug/pages -o ./src/html/ -P -w -b ./pug",
 		"pughelp": "pug -h",
