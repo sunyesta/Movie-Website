@@ -85,6 +85,7 @@ app.post(
 	"/login",
 
 	(req, res, next) => {
+		console.log("root =======", res.locals.root);
 		const passFunc = passport.authenticate("local", {
 			//on failure
 			failureRedirect: res.locals.root + "/users/login",
