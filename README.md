@@ -132,16 +132,25 @@ this is a public password: webtech
 ## Deploy
 
 1. cd into project folder
+2. run
 
-2. then use the keep alive method or the testing method
+```shell
+  $ npm i
+```
+
+3. then use the keep alive method or the testing method
 
 ### Keep Alive
+
+Will keep server running even when you kill the terminal
 
 ```sh
 $ pm2 start npm -- run prod
 ```
 
 ### Deploy Test
+
+Runs the server as the current process so it will terminate once you kill the terminal
 
 ```sh
 $ npm run prod
